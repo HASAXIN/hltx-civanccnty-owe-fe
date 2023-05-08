@@ -1,9 +1,26 @@
 <template>
-  <div class=''></div>
+  <div class=''>
+    <el-container>
+      <el-header>
+        <OweFeHeader></OweFeHeader>
+      </el-header>
+      <el-main><router-view></router-view></el-main>
+      <el-footer>
+        <OweFeFooter></OweFeFooter>
+      </el-footer>
+    </el-container>
+  </div>
 </template>
 
 <script lang='ts' setup>
+import OweFeHeader from './OweFeHeader.vue';
+import OweFeFooter from './OweFeFooter.vue';
 // import { ref } from 'vue';
 
 </script>
-<style lang='scss' scoped></style>
+<style lang='scss' scoped>
+* {
+  margin: 0;
+  padding: 0;
+}
+</style>
