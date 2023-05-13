@@ -1,7 +1,6 @@
 <template>
   <div class=''>
     666
-    <el-button @clicl="$router.push('LoginAndRegister')">登录</el-button>
   </div>
 </template>
 

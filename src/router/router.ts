@@ -12,10 +12,10 @@ const routes: Array<RouteRecordRaw> = [
     meta: { title: "文明古国" },
     component: () => import("../views/loginAndRegister/LoginAndRegister.vue"),
   },
-  // { path: "/", redirect: { name: "OweFeIndex" } },
+  { path: "/", redirect: { name: "HomePage" } },
 
   {
-    path: "/www",
+    path: "/OweFeIndex",
     name: "OweFeIndex",
     meta: { title: "文明古国" },
     component: () => import("../views/owefeindex/OweFeIndex.vue"),
@@ -28,7 +28,6 @@ const routes: Array<RouteRecordRaw> = [
       },
     ],
   },
-
 ];
 const router = createRouter({
   history: createWebHistory("/"),
