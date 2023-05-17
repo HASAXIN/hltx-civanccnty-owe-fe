@@ -2,11 +2,11 @@
   <div class=''>
     <el-container>
       <el-header>
-        <OweFeHeader></OweFeHeader>
+        <OweFeHeader/>
       </el-header>
-      <el-main><router-view></router-view></el-main>
+      <el-main><router-view/></el-main>
       <el-footer>
-        <OweFeFooter></OweFeFooter>
+        <OweFeFooter/>
       </el-footer>
     </el-container>
   </div>
