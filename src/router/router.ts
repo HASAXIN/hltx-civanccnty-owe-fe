@@ -26,12 +26,20 @@ const routes: Array<RouteRecordRaw> = [
         meta: { title: "文明古国" },
         component: () => import("../views/officialwebsite/homepage/HomePage.vue"),
       },
-      // {
-      //   path: "/PersonalCenter",
-      //   name: "PersonalCenter",
-      //   meta: { title: "文明古国" },
-      //   component: () => import("../views/personalcenter/PersonalCenter.vue"),
-      // },
+      {
+        path: "/PCtrlIndex",
+        name: "PCtrlIndex",
+        meta: { title: "文明古国" },
+        component: () => import("../views/personalcenter/pctrindex/PCtrIndex.vue"),
+        children:[
+          {
+            path: "/PCtrOverview",
+            name: "PCtrOverview",
+            meta: { title: "文明古国" },
+            component: () => import("../views/personalcenter/pctroverview/PCtrOverview.vue"),
+          },
+        ]
+      },
     ],
   },
 

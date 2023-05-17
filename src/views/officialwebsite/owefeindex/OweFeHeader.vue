@@ -21,6 +21,7 @@
           </el-sub-menu>
           <div class="flex-grow" />
           <el-menu-item @click="$router.push('LoginAndRegister')">登录</el-menu-item>
+          <el-menu-item @click="$router.push('PCtrOverview')">个人中心</el-menu-item>
         </el-menu>
       </div>
     </el-col>
