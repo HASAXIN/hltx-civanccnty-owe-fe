@@ -16,4 +16,7 @@ export default defineConfig({
   resolve: {
     extensions: [".ts", ".tsx", ".js"],
   },
+  // define: {
+  //   'process.env': {VUE_APP_FIRST_API_URL:'https://v.api.aa1.cn',VUE_APP_SECOND_API_URL:'http://122.112.174.92:8553/eai_nnl'}
+  // }
 })

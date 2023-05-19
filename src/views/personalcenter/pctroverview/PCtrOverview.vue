@@ -1,21 +1,27 @@
 <template>
     <div class=''>
+        {{ data.list }}
         123
-        {{data.list}}
+        {{ data.str }}
     </div>
 </template>
 <script lang='ts' setup>
 import { onMounted } from 'vue';
-import { getEveryDayWord } from '../../../config/api/api';
+import { getEveryDayWord } from '../../../config/api/internalBeApi';
+import { getCrazyThursday } from '../../../config/api/outendApi';
 
-import {reactive} from 'vue';
+import { reactive } from 'vue';
 const data = reactive({
-        list: "",
-    })
+    list: "",
+    str: [],
+})
 onMounted(() => {
     getEveryDayWord().then((res) => {
-            data.list = res.data.anwei
-        })
+        data.list = res.data.anwei
+    });
+    getCrazyThursday().then((res) => {
+        data.str = res.command
+    })
 });
 </script>
 <style lang='scss' scoped>

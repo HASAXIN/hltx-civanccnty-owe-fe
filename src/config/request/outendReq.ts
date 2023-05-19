@@ -7,7 +7,7 @@ import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios';
 //   data: T;
 
 const service: AxiosInstance = axios.create({
-  baseURL: process.env.VUE_APP_FIRST_API_URL,
+  baseURL:'http://122.112.174.92:8553/eai_nnl',
   timeout: 5000,
 });
 // 请求拦截器
