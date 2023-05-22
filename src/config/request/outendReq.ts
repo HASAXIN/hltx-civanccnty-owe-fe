@@ -6,9 +6,14 @@ import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios';
 //   message: string;
 //   data: T;
 
+
 const service: AxiosInstance = axios.create({
   baseURL:'http://122.112.174.92:8553/eai_nnl',
   timeout: 5000,
+  // 设置headers
+  headers: {
+    "Content-Type": "application/x-www-form-urlencoded;charset:UTF-8"
+  }
 });
 // 请求拦截器
 service.interceptors.request.use(

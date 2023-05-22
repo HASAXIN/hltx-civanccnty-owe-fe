@@ -5,8 +5,8 @@ import service from "../request/outendReq";
 export function getEveryDayWord1() {
   return service.get('/api/api-wenan-anwei/index.php?type=json');
 }
-export function getCrazyThursday() {
-  return service.post('/basics/resources/queryResourcesPageBean');
+export function getCrazyThursday(command:any) {
+  return service.post('/basics/resources/queryResourcesPageBean',command);
 }
 export function createTodo() {
   return service.post('/todos');
