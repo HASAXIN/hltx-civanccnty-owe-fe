@@ -15,9 +15,8 @@ import PCtrAside from './PCtrAside.vue';
 
 </script>
 <style lang='scss' scoped>
-* {
-    margin: 0;
-    padding: 0;
-}
 
+.container{
+    height: 100vh;
+}
 </style>

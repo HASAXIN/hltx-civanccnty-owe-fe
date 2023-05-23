@@ -2,12 +2,15 @@
   <div class=''>
     <el-container>
       <el-header>
-        <OweFeHeader/>
+        <OweFeHeader />
       </el-header>
-      <el-main><router-view/></el-main>
-      <el-footer>
-        <OweFeFooter/>
-      </el-footer>
+      <el-main>
+        <router-view />
+        <OweFeFooter />
+      </el-main>
+      <!-- <el-footer>
+
+      </el-footer> -->
     </el-container>
   </div>
 </template>

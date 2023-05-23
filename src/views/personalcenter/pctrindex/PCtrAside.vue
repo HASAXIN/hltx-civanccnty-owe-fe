@@ -20,11 +20,7 @@ const handleClose = (key: string, keyPath: string[]) => {
 }
 </script>
 <style lang="scss" scoped>
-* {
-    padding: 0;
-    margin: 0;
 
-}
 .demo{
 
 }
