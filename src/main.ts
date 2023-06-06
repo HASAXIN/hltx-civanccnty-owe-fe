@@ -8,12 +8,16 @@ import Axios from 'axios'
 import Service from './config/request/internalBeReq.ts'
 import zhCn from "element-plus/lib/locale/lang/zh-cn"
 import './config/common/common.css'
+import TanChuang from './views/personalcenter/pctroverview/tanchuang.vue'
 
 
 const pinia = createPinia();
 // createApp(App).use(router).use(pinia).use(ElementPlus).mount('#app')
 const app = createApp(App)
 app.use(router).use(pinia).use(ElementPlus, {locale: zhCn,}).mount('#app')
+// .component('tan-chuang', TanChuang)
+
+
 // 将 xxx 实例设置为全局变量
 app.config.globalProperties.$axios = Axios
 app.config.globalProperties.$service = Service;

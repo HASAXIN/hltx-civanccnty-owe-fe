@@ -8,7 +8,7 @@ import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios';
 
 
 const service: AxiosInstance = axios.create({
-  baseURL:'http://122.112.174.92:8553/eai_nnl',
+  baseURL:'http://172.16.0.110:8550/eai_dcec',
   timeout: 5000,
   // 设置headers
   headers: {
