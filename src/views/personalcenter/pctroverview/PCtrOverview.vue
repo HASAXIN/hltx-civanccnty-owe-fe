@@ -14,7 +14,7 @@
                     <el-table
                         :data="data.str.slice((pagination.currentPage - 1) * pagination.pageSize, pagination.currentPage * pagination.pageSize)"
                         @selection-change="handleSelectionChange" height="60vh" border style="width: 100%">
-                        <el-table-column v-for="(value, key) in data.str[0]" :key="key" :label="key" :prop="key"
+                        <el-table-column v-for="(key) in data.str[0]" :key="key" :label="key" :prop="key"
                             width="180" />
                     </el-table>
                 </div>
@@ -63,7 +63,7 @@
 import { onMounted } from 'vue';
 import { getEveryDayWord } from '../../../config/api/internalBeApi';
 import { getCrazyThursday, getCrazyFriday } from '../../../config/api/outendApi';
-import { ref, reactive, toRefs } from 'vue';
+import { ref, reactive } from 'vue';
 
 
 const data = reactive({

@@ -67,8 +67,11 @@ const rules = reactive<FormRules>({
 //登录按钮
 const submitForm = function () {
   if (ruleForm.username) {
-    // router.push({ name: 'HomePage', state: { obj: { "username": ruleForm.username } } })
-    router.push({ path: '/', query: { username: ruleForm.username } })
+    // URL带参传值
+    // router.push({ path: '/', query: { username: ruleForm.username } })
+    // URL不带参传值
+    router.push({ name: 'HomePage', params: { obj: JSON.stringify({ username: ruleForm.username }) } })
+
   }
 
 }

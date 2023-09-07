@@ -10,9 +10,12 @@ import { useRoute } from 'vue-router';
 
 // import { ref } from 'vue';
 const route = useRoute()
+
 console.log(route)
-const str = route.query.username;
-// const str1=history.state.obj.username
+// URL带参接值
+// const str = route.query.username;
+// URL不带参接值
+const str=route.params.username
 
 </script>
 <style lang='scss' scoped>
