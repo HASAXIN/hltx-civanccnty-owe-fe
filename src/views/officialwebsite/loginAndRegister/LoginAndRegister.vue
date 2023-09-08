@@ -70,7 +70,7 @@ const submitForm = function () {
     // URL带参传值
     // router.push({ path: '/', query: { username: ruleForm.username } })
     // URL不带参传值
-    router.push({ name: 'HomePage', params: { obj: JSON.stringify({ username: ruleForm.username }) } })
+    router.push({ name: 'HomePage', state: {  username: ruleForm.username } })
 
   }
 

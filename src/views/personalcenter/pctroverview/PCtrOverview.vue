@@ -14,8 +14,7 @@
                     <el-table
                         :data="data.str.slice((pagination.currentPage - 1) * pagination.pageSize, pagination.currentPage * pagination.pageSize)"
                         @selection-change="handleSelectionChange" height="60vh" border style="width: 100%">
-                        <el-table-column v-for="(key) in data.str[0]" :key="key" :label="key" :prop="key"
-                            width="180" />
+                        <el-table-column v-for="(key) in data.str[0]" :key="key" :label="key" :prop="key" width="180" />
                     </el-table>
                 </div>
                 <div class="pagination">
@@ -61,8 +60,8 @@
 </template>
 <script lang='ts' setup>
 import { onMounted } from 'vue';
-import { getEveryDayWord } from '../../../config/api/internalBeApi';
-import { getCrazyThursday, getCrazyFriday } from '../../../config/api/outendApi';
+import { getEveryDayWord, getEveryDayNews } from '../../../config/api/internalBeApi';
+import { getCrazyFriday } from '../../../config/api/outendApi';
 import { ref, reactive } from 'vue';
 
 
@@ -74,19 +73,19 @@ const data = reactive({
 const dialogFormVisible = ref(false)
 const formLabelWidth = '140px'
 const form = reactive({
-    rc_id:'rc_' + Date.now() + Math.round(Math.random() * 1000),
-    rc_resources_id:"",
+    rc_id: 'rc_' + Date.now() + Math.round(Math.random() * 1000),
+    rc_resources_id: "",
     rc_date: "",
     rc_count: "",
     rc_approve_result: "",
     _state: "added"
 })
 // const forms =
-const saveDialogFormVisible =async () => {
+const saveDialogFormVisible = async () => {
     try {
         await getCrazyFriday({ data: JSON.stringify([form]) }).then(() => {
-        dialogFormVisible.value = false
-    })
+            dialogFormVisible.value = false
+        })
     } catch (error) {
         console.log(error)
     }
@@ -95,15 +94,33 @@ const saveDialogFormVisible =async () => {
 
 
 
-const params = { command: JSON.stringify({}) }
+// const params = { command: JSON.stringify({}) }
+const datas = { name:"吉林省_长春市",page:"0" }
 onMounted(() => {
     getEveryDayWord().then((res) => {
         data.list = res.data.anwei
     });
-    getCrazyThursday(params).then((res) => {
-        data.str = res.data.data.DATA
+    getEveryDayNews(JSON.stringify(datas)).then((res) => {
+        data.str = res.data.data
+        console.log(res,"222")
     })
 });
+// 在这里编写你的逻辑代码
+// onMounted(async () => {
+//   try {
+//     const response = await createTodo({
+//       data: {
+//         name: 'example',
+//         page: 1
+//       }
+//     });
+//     // 处理返回的数据
+//     console.log(response.data);
+//   } catch (error) {
+//     // 处理错误
+//     console.error(error);
+//   }
+// });
 // 分页
 interface Posts {
 
