@@ -2,8 +2,8 @@
 
 import service from "../request/internalBeReq";
 
-export function getEveryDayWord() {
-  return service.get('/api/api-wenan-anwei/index.php?type=json');
+export function getEveryDayWord(type:any) {
+  return service.get('/api/api-saohua/index.php?'+type);
 }
 export function getEveryDayNews(datas:any) {
   console.log(datas,"datas")

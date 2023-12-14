@@ -6,7 +6,10 @@
                         <!-- <el-icon><icon-menu /></el-icon> -->
                         <span @click="$router.push('PCtrOverview')">个人中心总览</span>
                     </el-menu-item>
-
+                    <el-menu-item index="2">
+                        <!-- <el-icon><icon-menu /></el-icon> -->
+                        <span @click="$router.push('PCtrPS')">切图</span>
+                    </el-menu-item>
                 </el-menu>
             </el-col>
         </el-row>

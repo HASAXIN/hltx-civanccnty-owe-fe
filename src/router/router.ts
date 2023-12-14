@@ -37,6 +37,11 @@ const routes: Array<RouteRecordRaw> = [
             name: "PCtrOverview",
             meta: { title: "文明古国" },
             component: () => import("../views/personalcenter/pctroverview/PCtrOverview.vue"),
+          },{
+            path: "/PCtrPS",
+            name: "PCtrPS",
+            meta: { title: "文明古国" },
+            component: () => import("../views/personalcenter/pctroverview/PCtrPS.vue"),
           },
         ]
       },

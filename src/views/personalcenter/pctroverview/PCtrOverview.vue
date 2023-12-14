@@ -4,7 +4,7 @@
             <el-card class="box-card" style="height:85vh">
                 <template #header>
                     <div class="card-header">
-                        <span>{{ data.list }}</span>
+                        <span class="card-header-span">{{ data.list }}</span>
                         <el-button class="button" text @click="dialogFormVisible = true">新增</el-button>
                         <!-- <tan-chuang :visible.sync="tc.dialogVisile" :title="tc.modalTitle" :message="tc.modalMessage" @close="tc.showModal = false">
                         </tan-chuang> -->
@@ -12,9 +12,35 @@
                 </template>
                 <div class='table'>
                     <el-table
-                        :data="data.str.slice((pagination.currentPage - 1) * pagination.pageSize, pagination.currentPage * pagination.pageSize)"
-                        @selection-change="handleSelectionChange" height="60vh" border style="width: 100%">
-                        <el-table-column v-for="(key) in data.str[0]" :key="key" :label="key" :prop="key" width="180" />
+                        :data="data.newsList.slice((pagination.currentPage - 1) * pagination.pageSize, pagination.currentPage * pagination.pageSize)"
+                        @selection-change="handleSelectionChange" @row-click="roweClick" @header-click="headerClick"
+                        @cell-mouse-enter="cellMouseEnter" height="60vh" border style="width: 100%">
+                        <!-- <el-table-column v-for="(item, index) in data.str[0]" :key="index" :label="index" :prop="index"
+                            width="180" /> -->
+                        <el-table-column key="number" type="index" label="序号" width="70"></el-table-column>
+                        <el-table-column key="imgsrc3gtype" label="照片类型" prop="imgsrc3gtype" width="100" />
+                        <el-table-column key="digest" label="文章内容" prop="digest" width="180" />
+                        <el-table-column key="source" label="来源" prop="source" width="180" />
+                        <el-table-column key="pic" label="照片" prop="pic" width="180">
+                            <template v-slot:default="scope">
+                                <el-popover trigger="click" placement="right" :width="500">
+                                    <template #reference>
+                                        <el-image :src="scope.row.imgsrc" />
+                                    </template>
+                                    <el-image :src="scope.row.imgsrc" />
+                                    <span>{{ scope.row.digest }}</span>
+                                </el-popover>
+                            </template>
+                        </el-table-column>
+                        <el-table-column key="title" label="标题" prop="title" width="180" />
+                        <el-table-column key="ptime" label="时间" prop="ptime" width="180" />
+                        <el-table-column key="commentCount" label="浏览量" prop="commentCount" width="100" />
+                        <el-table-column key="url" label="新闻链接" width="300">
+                            <template v-slot:default="scope">
+                                <el-link :href="scope.row.url" style="color:blue;">{{ scope.row.url }}</el-link>
+                            </template>
+
+                        </el-table-column>
                     </el-table>
                 </div>
                 <div class="pagination">
@@ -61,6 +87,7 @@
 <script lang='ts' setup>
 import { onMounted } from 'vue';
 import { getEveryDayWord, getEveryDayNews } from '../../../config/api/internalBeApi';
+import { getAppHotNews } from '../../../config/api/outendApi';
 import { getCrazyFriday } from '../../../config/api/outendApi';
 import { ref, reactive } from 'vue';
 
@@ -68,6 +95,7 @@ import { ref, reactive } from 'vue';
 const data = reactive({
     list: "",
     str: [],
+    newsList:[]
 })
 
 const dialogFormVisible = ref(false)
@@ -91,18 +119,22 @@ const saveDialogFormVisible = async () => {
     }
 }
 
-
-
-
+const aaa = "吉林省_长春市"
+const title = "哔哩哔哩"
 // const params = { command: JSON.stringify({}) }
-const datas = { name:"吉林省_长春市",page:"0" }
+const datas = `name=${aaa}&page="0"`;
+const type = `type=json`
 onMounted(() => {
-    getEveryDayWord().then((res) => {
-        data.list = res.data.anwei
+    getEveryDayWord(type).then((res) => {
+        data.list = res.data.saohua
+        console.log(res, "222")
     });
-    getEveryDayNews(JSON.stringify(datas)).then((res) => {
+    getEveryDayNews(datas).then((res) => {
         data.str = res.data.data
-        console.log(res,"222")
+
+    })
+    getAppHotNews(title).then(() => {
+
     })
 });
 // 在这里编写你的逻辑代码
@@ -132,6 +164,7 @@ const pagination = ref({
 const multipleSelection = ref<Posts[]>([])
 const handleSelectionChange = (val: Posts[]) => {
     multipleSelection.value = val
+
 }
 // 选择每页多少条
 const handleSizeChange = (val: number) => {
@@ -145,13 +178,61 @@ const handleCurrentChange = (val: number) => {
 }
 
 
+const roweClick = (row, column, event) => {
+    // alert(JSON.stringify(row))
+    // alert(JSON.stringify(column))
+    // alert(JSON.stringify(event))
+
+}
+const headerClick = (column, event) => {
+    // alert(JSON.stringify(column))
+    // alert(JSON.stringify(event))
+
+}
+const cellMouseEnter = (row, column, cell, event) => {
+    // alert(JSON.stringify(row))
+    // alert(JSON.stringify(column))
+    // alert(JSON.stringify(cell))
+    // alert(JSON.stringify(event))
+}
+
+
+
+
+
 
 </script>
 <style lang='scss' scoped>
+// 文字交融
 .card-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    // margin-top: 50px;
+    text-align: center;
+    background-color: #b32323;
+    //设置对比度
+    filter: contrast(30);
+
+    .card-header-span {
+        padding: 0 0 0 3px;
+        color: #fff;
+        animation: showup 3s linear forwards;
+    }
+}
+
+@keyframes showup {
+    0% {
+        // 文字位置
+        letter-spacing: -50px;
+        // 设置模糊度
+        filter: blur(10px);
+    }
+
+    100% {
+        letter-spacing: 10px;
+        filter: blur(0px);
+    }
 }
 
 .text {
